@@ -2374,17 +2374,6 @@ document.querySelectorAll('[data-ba-card]').forEach(card => {
 });
 
 
-/* -----------------------------------------------
-   FORM SUBMIT (demo)
-   ----------------------------------------------- */
-document.getElementById('quoteForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const btn = this.querySelector('.form-submit');
-  btn.textContent = '✓ Request sent! We\'ll be in touch within 24 hours.';
-  btn.style.background = 'var(--c-green-mid)';
-  btn.disabled = true;
-});
-
 
 /* -----------------------------------------------
    SECTION LABEL — centre alignment fix
