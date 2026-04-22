@@ -1405,6 +1405,7 @@ section { position: relative; z-index: 1; }
   font-weight: 300;
   transition: border-color 0.2s, box-shadow 0.2s;
   outline: none;
+  -webkit-appearance: none;
 }
 
 .form-group input:focus,
@@ -2120,7 +2121,7 @@ footer {
       </div>
 
       <div class="contact-form-wrap reveal reveal-delay-2">
-        <form id="quoteForm" novalidate>
+        <form id="quoteForm" action="https://formspree.io/f/xzdykbrr" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label for="fname">First name</label>
