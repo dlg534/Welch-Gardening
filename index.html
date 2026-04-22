@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welch Gardening Services | Est. 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#2A2D1E;
+  --forest:#2F4A23;
+  --forest-deep:#1E3016;
+  --moss:#4A6B35;
+  --leaf:#5C8A3C;
+  --leaf-light:#7BAD56;
+  --sage:#8FAF72;
+  --parchment:#F4EFE4;
+  --parchment-dark:#E8E0CC;
+  --cream:#FAFAF5;
+  --gold:#B8903C;
+  --gold-warm:#C9A24A;
+  --warm-white:#F9F6F0;
+  --text-body:#3A3D2E;
+  --text-muted:#6B6F58;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--parchment);color:var(--text-body);overflow-x:hidden;cursor:none}
+.cursor{position:fixed;width:12px;height:12px;background:var(--leaf);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s;mix-blend-mode:multiply}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--moss);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.5}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.55}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 6vw;transition:background .5s,box-shadow .5s}
+nav.scrolled{background:rgba(20,36,14,.97);backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(184,144,60,.2)}
+.nav-logo-wrap{display:flex;align-items:center;gap:.9rem}
+.nav-badge{width:44px;height:44px;flex-shrink:0}
+.nav-wordmark{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--cream);letter-spacing:.02em;line-height:1.1}
+.nav-wordmark span{display:block;font-size:.58rem;font-family:'DM Sans',sans-serif;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin-top:2px}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-links a{font-size:.74rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,250,245,.65);text-decoration:none;transition:color .25s}
+.nav-links a:hover{color:var(--gold-warm)}
+.nav-cta{border:1px solid var(--gold) !important;color:var(--gold) !important;padding:.5rem 1.4rem !important;transition:all .3s !important}
+.nav-cta:hover{background:var(--gold) !important;color:var(--forest-deep) !important}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--forest-deep);display:grid;grid-template-rows:1fr auto;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 72% 50%,rgba(47,74,35,.6) 0%,transparent 70%),radial-gradient(ellipse 35% 45% at 15% 75%,rgba(92,138,60,.1) 0%,transparent 60%),linear-gradient(165deg,#0D1A09 0%,#1E3016 45%,#2A4020 100%)}
+.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:10rem 3rem 7rem 8vw}
+.hero-eyebrow{display:flex;align-items:center;gap:1rem;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5.8rem);font-weight:400;line-height:1.04;color:var(--cream);margin-bottom:2rem}
+.hero-h1 em{font-style:italic;color:var(--sage)}
+.hero-h1 strong{display:block;font-weight:700;-webkit-text-stroke:1px var(--leaf-light);color:transparent}
+.hero-sub{font-size:1rem;font-weight:300;line-height:1.85;color:rgba(250,250,245,.52);max-width:380px;margin-bottom:2.8rem;border-left:2px solid var(--gold);padding-left:1.2rem}
+.hero-btns{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
+.btn-fill{background:var(--leaf);color:var(--cream);padding:.9rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:.77rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .35s;display:inline-block;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
+.btn-fill:hover{background:var(--leaf-light);transform:translateY(-3px)}
+.btn-line{color:rgba(250,250,245,.6);font-size:.77rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:.6rem;transition:color .3s}
+.btn-line:hover{color:var(--cream)}
+.btn-line::after{content:'↓';transition:transform .3s}
+.btn-line:hover::after{transform:translateY(3px)}
+.hero-right{display:flex;align-items:center;justify-content:center;position:relative;padding:10rem 4rem 7rem}
+.hero-logo-ring{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-logo-ring::before{content:'';position:absolute;width:360px;height:360px;border-radius:50%;border:1px solid rgba(184,144,60,.2);animation:pulse-ring 4s ease-in-out infinite}
+.hero-logo-ring::after{content:'';position:absolute;width:420px;height:420px;border-radius:50%;border:1px solid rgba(184,144,60,.07);animation:pulse-ring 4s ease-in-out infinite .8s}
+@keyframes pulse-ring{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.03);opacity:1}}
+.hero-logo-svg{width:270px;height:270px;filter:drop-shadow(0 0 40px rgba(92,138,60,.28));animation:fadeUp 1s .2s both ease,float 6s 1.2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(184,144,60,.15)}
+.hero-stat{padding:1.8rem 2rem;border-right:1px solid rgba(184,144,60,.1);display:flex;flex-direction:column;gap:.3rem}
+.hero-stat:last-child{border-right:none}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--gold-warm);line-height:1}
+.stat-l{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,250,245,.38)}
+
+/* INTRO */
+.intro{background:var(--warm-white);padding:7rem 8vw;display:grid;grid-template-columns:1fr 2px 1fr;gap:5rem;align-items:center}
+.intro-divider{background:var(--parchment-dark)}
+.intro-kicker{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--leaf);display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem}
+.intro-kicker::before{content:'';width:24px;height:1px;background:var(--leaf)}
+.intro-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.8rem);font-weight:400;color:var(--forest-deep);line-height:1.2;margin-bottom:1.5rem}
+.intro-title em{font-style:italic;color:var(--moss)}
+.intro-body{font-size:.93rem;line-height:1.9;color:var(--text-muted);font-weight:300}
+.intro-right{display:flex;flex-direction:column;gap:2rem}
+.intro-pillar{display:flex;gap:1.5rem;align-items:flex-start}
+.pillar-icon{width:44px;height:44px;flex-shrink:0;background:var(--forest-deep);display:flex;align-items:center;justify-content:center}
+.pillar-icon svg{width:22px;height:22px;stroke:var(--sage);fill:none;stroke-width:1.5;stroke-linecap:round}
+.pillar-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--forest-deep);margin-bottom:.3rem}
+.pillar-text{font-size:.83rem;line-height:1.75;color:var(--text-muted);font-weight:300}
+
+/* MARQUEE */
+.marquee-band{background:var(--leaf);padding:.9rem 0;overflow:hidden}
+.marquee-inner{display:flex;animation:marquee 30s linear infinite;width:max-content}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{font-family:'Playfair Display',serif;font-size:.88rem;font-style:italic;color:rgba(255,255,255,.85);white-space:nowrap;padding:0 2.5rem;display:flex;align-items:center;gap:2.5rem}
+.marquee-item::after{content:'✦';font-style:normal;font-size:.55rem;color:rgba(255,255,255,.4)}
+
+/* SERVICES */
+.services{background:var(--forest-deep);padding:7rem 8vw}
+.section-header{margin-bottom:4rem}
+.section-kicker{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.section-kicker::before{content:'';width:24px;height:1px;background:var(--gold)}
+.section-h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.8vw,3.3rem);font-weight:400;color:var(--cream);line-height:1.1}
+.section-h2 em{font-style:italic;color:var(--sage)}
+.section-h2-dark{color:var(--forest-deep) !important}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.05)}
+.svc{background:var(--forest-deep);padding:2.8rem 2.2rem;position:relative;overflow:hidden;transition:background .4s;cursor:default}
+.svc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .45s ease}
+.svc:hover{background:#243D1A}
+.svc:hover::after{transform:scaleX(1)}
+.svc-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:rgba(255,255,255,.04);line-height:1;margin-bottom:1.5rem;transition:color .4s}
+.svc:hover .svc-num{color:rgba(255,255,255,.07)}
+.svc-icon{width:42px;height:42px;margin-bottom:1.4rem;stroke:var(--sage);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.svc-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:400;color:var(--cream);margin-bottom:.75rem;transition:color .4s}
+.svc:hover .svc-name{color:var(--sage)}
+.svc-text{font-size:.84rem;line-height:1.85;color:rgba(250,250,245,.42);font-weight:300;margin-bottom:1.8rem}
+.svc-more{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:.5rem;opacity:0;transform:translateX(-8px);transition:all .35s}
+.svc:hover .svc-more{opacity:1;transform:translateX(0)}
+.svc-more::after{content:'→'}
+
+/* PROCESS */
+.process{background:var(--parchment);padding:7rem 8vw}
+.process-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;margin-top:4rem}
+.process-visual{position:sticky;top:7rem;display:flex;align-items:center;justify-content:center}
+.process-circle{width:300px;height:300px;border-radius:50%;background:var(--forest-deep);display:flex;align-items:center;justify-content:center;position:relative}
+.process-circle::before{content:'';position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(47,74,35,.25)}
+.process-circle::after{content:'';position:absolute;inset:-24px;border-radius:50%;border:1px dashed rgba(184,144,60,.2);animation:spin 30s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.process-center-logo{width:155px;height:155px}
+.process-steps{display:flex;flex-direction:column}
+.pstep{display:grid;grid-template-columns:52px 1fr;gap:1.5rem;padding:2rem 0;border-bottom:1px solid var(--parchment-dark)}
+.pstep:first-child{border-top:1px solid var(--parchment-dark)}
+.pstep-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--leaf);opacity:.35;line-height:1}
+.pstep-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--forest-deep);margin-bottom:.35rem}
+.pstep-text{font-size:.84rem;line-height:1.8;color:var(--text-muted);font-weight:300}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--forest);padding:7rem 8vw}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.tcard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:2.5rem;transition:border-color .35s,background .35s}
+.tcard:hover{border-color:rgba(184,144,60,.35);background:rgba(255,255,255,.06)}
+.tcard-stars{display:flex;gap:4px;margin-bottom:1.4rem}
+.star{width:13px;height:13px;background:var(--gold);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.tcard-quote{font-family:'Libre Baskerville',serif;font-size:.97rem;font-style:italic;line-height:1.75;color:rgba(250,250,245,.78);margin-bottom:2rem;position:relative}
+.tcard-quote::before{content:'\201C';font-size:4rem;line-height:0;color:var(--gold);opacity:.15;position:absolute;top:1rem;left:-.5rem}
+.tcard-author{font-size:.78rem;font-weight:500;letter-spacing:.08em;color:var(--sage)}
+.tcard-loc{font-size:.73rem;color:rgba(250,250,245,.28);margin-top:.2rem}
+
+/* AREAS */
+.area{background:var(--warm-white);padding:7rem 8vw;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.area-map{aspect-ratio:1;background:var(--parchment-dark);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.area-map svg{width:100%;height:100%;opacity:.55}
+.area-pin{position:absolute;width:12px;height:12px;background:var(--leaf);border-radius:50%;border:2px solid var(--cream);animation:pin-pulse 2.5s ease-in-out infinite}
+@keyframes pin-pulse{0%,100%{box-shadow:0 0 0 4px rgba(92,138,60,.25)}50%{box-shadow:0 0 0 10px rgba(92,138,60,.07)}}
+.area-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:2rem}
+.area-list li{font-size:.84rem;color:var(--text-muted);font-weight:300;display:flex;align-items:center;gap:.6rem;padding:.4rem 0;border-bottom:1px solid var(--parchment-dark)}
+.area-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--leaf);flex-shrink:0}
+
+/* CTA */
+.cta{background:var(--forest-deep);padding:7rem 8vw;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(92,138,60,.09) 0%,transparent 70%);pointer-events:none}
+.cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;position:relative;z-index:1}
+.cta-label{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(184,144,60,.35);padding:.4rem 1rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.cta-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.cta-h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.8vw,3rem);font-weight:400;color:var(--cream);line-height:1.1;margin-bottom:1rem}
+.cta-h2 em{font-style:italic;color:var(--sage)}
+.cta-p{font-size:.9rem;line-height:1.8;color:rgba(250,250,245,.48);font-weight:300;max-width:400px}
+.form-group{display:flex;flex-direction:column;gap:.85rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.form-field{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:.9rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.875rem;color:var(--cream);width:100%;outline:none;transition:border-color .3s,background .3s;-webkit-appearance:none}
+.form-field::placeholder{color:rgba(250,250,245,.28)}
+.form-field:focus{border-color:var(--gold);background:rgba(255,255,255,.08)}
+select.form-field{color:rgba(250,250,245,.6);cursor:pointer}
+select.form-field option{background:var(--forest-deep);color:var(--cream)}
+.form-field.ta{resize:none;height:105px}
+.form-submit{background:var(--leaf);color:var(--cream);border:none;padding:1rem 2rem;width:100%;font-family:'DM Sans',sans-serif;font-size:.77rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .35s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
+.form-submit:hover{background:var(--leaf-light);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:#0D1A09;padding:4.5rem 8vw 2rem;border-top:1px solid rgba(184,144,60,.14)}
+.footer-main{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3.5rem}
+.footer-logo-wrap{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem}
+.footer-logo-badge{width:50px;height:50px}
+.footer-wordmark{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--cream)}
+.footer-wordmark span{display:block;font-size:.56rem;font-family:'DM Sans',sans-serif;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-top:2px}
+.footer-desc{font-size:.83rem;line-height:1.85;color:rgba(250,250,245,.35);font-weight:300;max-width:270px;margin-bottom:1.5rem}
+.footer-contact-line{font-size:.82rem;color:rgba(250,250,245,.45);line-height:2.1}
+.footer-contact-line a{color:var(--gold-warm);text-decoration:none}
+.footer-col-title{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:.55rem}
+.footer-links a{font-size:.82rem;font-weight:300;color:rgba(250,250,245,.4);text-decoration:none;transition:color .25s}
+.footer-links a:hover{color:var(--cream)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.8rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.7rem;color:rgba(250,250,245,.2)}
+.footer-badges{display:flex;gap:.8rem}
+.fbadge{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(184,144,60,.5);border:1px solid rgba(184,144,60,.18);padding:.25rem .7rem}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{animation:fadeUp .8s .1s both ease}
+.hero-h1{animation:fadeUp .9s .25s both ease}
+.hero-sub{animation:fadeUp .9s .4s both ease}
+.hero-btns{animation:fadeUp .9s .55s both ease}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  nav{padding:1rem 5vw}
+  .nav-links{display:none}
+  .hero-content{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:9rem 6vw 4rem}
+  .hero-right{padding:3rem 6vw 4rem;min-height:300px}
+  .hero-logo-ring::before,.hero-logo-ring::after{width:240px;height:240px}
+  .hero-logo-svg{width:200px;height:200px}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .intro{grid-template-columns:1fr;gap:3rem}
+  .intro-divider{display:none}
+  .services-grid{grid-template-columns:1fr}
+  .process-grid,.area,.cta-inner{grid-template-columns:1fr;gap:3rem}
+  .process-visual{position:static}
+  .testi-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .area-list{grid-template-columns:1fr}
+  .footer-main{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo-wrap">
+    <svg class="nav-badge" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="150" cy="150" r="141" fill="#1E3016"/>
+      <circle cx="150" cy="150" r="142" stroke="#C9A24A" stroke-width="3"/>
+      <circle cx="150" cy="150" r="133" stroke="#C9A24A" stroke-width="0.8" stroke-dasharray="4 4" opacity=".4"/>
+      <rect x="140" y="44" width="20" height="14" rx="7" fill="none" stroke="#F4EFE4" stroke-width="3"/>
+      <rect x="147" y="56" width="6" height="82" rx="2" fill="#F4EFE4"/>
+      <path d="M133 138 Q150 200 167 138 Z" fill="#111" stroke="#F4EFE4" stroke-width="2.5"/>
+      <line x1="133" y1="138" x2="167" y2="138" stroke="#F4EFE4" stroke-width="2.5"/>
+      <path d="M150 148 Q138 132 143 120 Q153 134 150 148Z" fill="#7BAD56"/>
+      <path d="M150 148 Q162 132 157 120 Q147 134 150 148Z" fill="#5C8A3C"/>
+      <g transform="translate(80,115)"><path d="M0 0 Q-18 -22 -5 -38 Q4 -18 0 0Z" fill="#5C8A3C"/><path d="M0 0 Q-24 -12 -18 -30 Q-6 -14 0 0Z" fill="#7BAD56"/><path d="M0 0 Q-20 0 -22 -18 Q-8 -4 0 0Z" fill="#5C8A3C" opacity=".8"/></g>
+      <g transform="translate(220,115)"><path d="M0 0 Q18 -22 5 -38 Q-4 -18 0 0Z" fill="#5C8A3C"/><path d="M0 0 Q24 -12 18 -30 Q6 -14 0 0Z" fill="#7BAD56"/><path d="M0 0 Q20 0 22 -18 Q8 -4 0 0Z" fill="#5C8A3C" opacity=".8"/></g>
+      <text x="108" y="160" font-family="Georgia,serif" font-size="18" fill="#5C8A3C" font-weight="bold">20</text>
+      <text x="168" y="160" font-family="Georgia,serif" font-size="18" fill="#5C8A3C" font-weight="bold">25</text>
+      <path id="na" d="M60,150 A90,90 0 0,1 240,150" fill="none"/>
+      <text font-family="Georgia,serif" font-size="22" fill="#C9A24A" font-weight="bold" letter-spacing="8"><textPath href="#na" startOffset="18%">WELCH</textPath></text>
+      <path id="nb" d="M52,158 A100,100 0 0,0 248,158" fill="none"/>
+      <text font-family="Georgia,serif" font-size="13" fill="#8FAF72" letter-spacing="3"><textPath href="#nb" startOffset="6%">GARDENING SERVICES</textPath></text>
+    </svg>
+    <div class="nav-wordmark">Welch<span>Gardening Services</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Est. 2025 &nbsp;·&nbsp; Trusted Locally</p>
+      <h1 class="hero-h1">
+        Gardens<br>
+        <em>tended</em> with<br>
+        <strong>passion.</strong>
+      </h1>
+      <p class="hero-sub">
+        From pristine lawns to breathtaking transformations — Welch Gardening Services brings expert craft and genuine care to every outdoor space we touch.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-fill">Get a Free Quote</a>
+        <a href="#services" class="btn-line">Explore services</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-logo-ring">
+        <svg class="hero-logo-svg" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="150" cy="150" r="141" fill="#1E3016" opacity=".9"/>
+          <circle cx="150" cy="150" r="142" stroke="#C9A24A" stroke-width="2.5"/>
+          <circle cx="150" cy="150" r="133" stroke="#C9A24A" stroke-width=".8" stroke-dasharray="4 4" opacity=".35"/>
+          <!-- Shovel -->
+          <rect x="140" y="44" width="20" height="14" rx="7" fill="none" stroke="#F4EFE4" stroke-width="3.5"/>
+          <rect x="147" y="56" width="6" height="82" rx="2" fill="#F4EFE4"/>
+          <path d="M133 138 Q150 202 167 138 Z" fill="#111" stroke="#F4EFE4" stroke-width="2.5"/>
+          <line x1="133" y1="138" x2="167" y2="138" stroke="#F4EFE4" stroke-width="2.5"/>
+          <!-- Centre leaves -->
+          <path d="M150 150 Q138 133 143 120 Q154 135 150 150Z" fill="#7BAD56"/>
+          <path d="M150 150 Q162 133 157 120 Q146 135 150 150Z" fill="#5C8A3C"/>
+          <path d="M150 150 Q136 143 138 130 Q148 140 150 150Z" fill="#8FAF72" opacity=".7"/>
+          <!-- Left sprigs -->
+          <g transform="translate(78,118)"><path d="M0 0 Q-20 -24 -6 -40 Q5 -18 0 0Z" fill="#5C8A3C"/><path d="M0 0 Q-26 -13 -20 -32 Q-6 -14 0 0Z" fill="#7BAD56"/><path d="M0 0 Q-22 2 -24 -18 Q-8 -3 0 0Z" fill="#5C8A3C" opacity=".8"/><path d="M0 0 Q-15 14 -22 -1 Q-6 5 0 0Z" fill="#4A6B35" opacity=".6"/></g>
+          <!-- Right sprigs -->
+          <g transform="translate(222,118)"><path d="M0 0 Q20 -24 6 -40 Q-5 -18 0 0Z" fill="#5C8A3C"/><path d="M0 0 Q26 -13 20 -32 Q6 -14 0 0Z" fill="#7BAD56"/><path d="M0 0 Q22 2 24 -18 Q8 -3 0 0Z" fill="#5C8A3C" opacity=".8"/><path d="M0 0 Q15 14 22 -1 Q6 5 0 0Z" fill="#4A6B35" opacity=".6"/></g>
+          <!-- Year -->
+          <text x="105" y="162" font-family="Georgia,serif" font-size="19" fill="#5C8A3C" font-weight="bold">20</text>
+          <text x="166" y="162" font-family="Georgia,serif" font-size="19" fill="#5C8A3C" font-weight="bold">25</text>
+          <!-- Text arcs -->
+          <path id="ha" d="M58,150 A92,92 0 0,1 242,150" fill="none"/>
+          <text font-family="Georgia,serif" font-size="23" fill="#C9A24A" font-weight="bold" letter-spacing="8"><textPath href="#ha" startOffset="17%">WELCH</textPath></text>
+          <path id="hb" d="M50,160 A102,102 0 0,0 250,160" fill="none"/>
+          <text font-family="Georgia,serif" font-size="13.5" fill="#8FAF72" letter-spacing="3.2"><textPath href="#hb" startOffset="5%">GARDENING SERVICES</textPath></text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="stat-n">Local</span><span class="stat-l">Community roots</span></div>
+    <div class="hero-stat"><span class="stat-n">100%</span><span class="stat-l">Satisfaction guaranteed</span></div>
+    <div class="hero-stat"><span class="stat-n">Free</span><span class="stat-l">Initial consultation</span></div>
+    <div class="hero-stat"><span class="stat-n">Fully</span><span class="stat-l">Insured &amp; reliable</span></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" id="about">
+  <div class="intro-left reveal">
+    <p class="intro-kicker">Our philosophy</p>
+    <h2 class="intro-title">More than just gardening.<br><em>A craft we love.</em></h2>
+    <p class="intro-body">Welch Gardening Services was built on a simple belief: every garden deserves the same pride and attention you'd give your own.<br><br>We started local, building a reputation on reliability, quality, and treating every customer like a neighbour. Now we're growing — and bringing that same personal care to new clients across the region. When you work with Welch, you're not a ticket number. You're someone whose outdoor space genuinely matters to us.</p>
+  </div>
+  <div class="intro-divider"></div>
+  <div class="intro-right">
+    <div class="intro-pillar reveal">
+      <div class="pillar-icon"><svg viewBox="0 0 22 22"><path d="M11 2C11 2 4 8 4 14a7 7 0 0 0 14 0C18 8 11 2 11 2Z"/><path d="M11 10v8"/></svg></div>
+      <div><p class="pillar-name">Genuine Care</p><p class="pillar-text">We treat every garden as our own. Considered decisions, quality materials, and attention to every detail.</p></div>
+    </div>
+    <div class="intro-pillar reveal">
+      <div class="pillar-icon"><svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="9"/><path d="M11 6v5l3 3"/></svg></div>
+      <div><p class="pillar-name">Reliable &amp; Punctual</p><p class="pillar-text">We show up when we say, do exactly what we promised, and leave your garden spotless. Every single time.</p></div>
+    </div>
+    <div class="intro-pillar reveal">
+      <div class="pillar-icon"><svg viewBox="0 0 22 22"><path d="M3 17L8 12L12 16L17 9L21 13"/></svg></div>
+      <div><p class="pillar-name">Growing With You</p><p class="pillar-text">One-off tidy-up or full seasonal contract — we scale to your needs and grow with your ambitions for the space.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-band">
+  <div class="marquee-inner">
+    <span class="marquee-item">Lawn Mowing &amp; Edging</span><span class="marquee-item">Garden Design</span><span class="marquee-item">Hedge Trimming</span><span class="marquee-item">Planting &amp; Borders</span><span class="marquee-item">Hard Landscaping</span><span class="marquee-item">Seasonal Clearance</span><span class="marquee-item">Tree &amp; Shrub Care</span><span class="marquee-item">Ongoing Maintenance</span><span class="marquee-item">Lawn Mowing &amp; Edging</span><span class="marquee-item">Garden Design</span><span class="marquee-item">Hedge Trimming</span><span class="marquee-item">Planting &amp; Borders</span><span class="marquee-item">Hard Landscaping</span><span class="marquee-item">Seasonal Clearance</span><span class="marquee-item">Tree &amp; Shrub Care</span><span class="marquee-item">Ongoing Maintenance</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header reveal">
+    <p class="section-kicker">What we do</p>
+    <h2 class="section-h2">Expert services for every <em>outdoor space</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="svc reveal"><div class="svc-num">01</div><svg class="svc-icon" viewBox="0 0 44 44"><path d="M22 6C22 6 8 16 8 28a14 14 0 0028 0C36 16 22 6 22 6Z"/><path d="M22 18v18M16 24l6-6 6 6"/></svg><h3 class="svc-name">Lawn Care &amp; Mowing</h3><p class="svc-text">Regular mowing schedules tailored to your lawn. Precise edging, strimming, and clippings removed — leaving a finish you'll be proud of every time.</p><a href="#contact" class="svc-more">Enquire now</a></div>
+    <div class="svc reveal"><div class="svc-num">02</div><svg class="svc-icon" viewBox="0 0 44 44"><rect x="8" y="8" width="28" height="28" rx="2"/><path d="M8 20h28M20 8v28"/></svg><h3 class="svc-name">Hedge Trimming</h3><p class="svc-text">Clean, confident cuts that give your hedges shape and structure. All species handled — privet, leylandii, beech, box — with care and precision.</p><a href="#contact" class="svc-more">Enquire now</a></div>
+    <div class="svc reveal"><div class="svc-num">03</div><svg class="svc-icon" viewBox="0 0 44 44"><path d="M8 36l8-20 6 10 5-14 6 10 5-6 6 20H8Z"/></svg><h3 class="svc-name">Planting &amp; Borders</h3><p class="svc-text">Seasonal planting schemes and border maintenance that bring colour and life year-round. We advise, source, and plant to suit your soil and light.</p><a href="#contact" class="svc-more">Enquire now</a></div>
+    <div class="svc reveal"><div class="svc-num">04</div><svg class="svc-icon" viewBox="0 0 44 44"><path d="M10 34h24M12 34V22l10-12 10 12v12"/><path d="M18 34v-8h8v8"/></svg><h3 class="svc-name">Garden Design</h3><p class="svc-text">Transform your space from the ground up. We create detailed planting plans, layouts and mood boards — so you know exactly what you're getting before we start.</p><a href="#contact" class="svc-more">Enquire now</a></div>
+    <div class="svc reveal"><div class="svc-num">05</div><svg class="svc-icon" viewBox="0 0 44 44"><rect x="8" y="26" width="28" height="12" rx="2"/><path d="M14 26V18c0-4.4 3.6-8 8-8s8 3.6 8 8v8"/><circle cx="22" cy="32" r="2.5"/></svg><h3 class="svc-name">Hard Landscaping</h3><p class="svc-text">Patios, paths, raised beds, sleeper borders and garden walls. Built properly from quality materials that will look great and last for years to come.</p><a href="#contact" class="svc-more">Enquire now</a></div>
+    <div class="svc reveal"><div class="svc-num">06</div><svg class="svc-icon" viewBox="0 0 44 44"><path d="M22 8v4M8 22h4M32 22h4M22 36v4M13 13l3 3M28 28l3 3M13 31l3-3M28 16l3-3"/><circle cx="22" cy="22" r="7"/></svg><h3 class="svc-name">Seasonal Clearance</h3><p class="svc-text">Autumn leaf clearance, spring tidy-ups and everything in between. We get your garden looking immaculate whatever the season demands of it.</p><a href="#contact" class="svc-more">Enquire now</a></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-header reveal">
+    <p class="section-kicker" style="color:var(--leaf)"><span style="display:inline-flex;align-items:center;gap:.8rem"><span style="width:24px;height:1px;background:var(--leaf);display:inline-block"></span>How it works</span></p>
+    <h2 class="section-h2 section-h2-dark">A clear, <em>simple</em> process</h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-visual">
+      <div class="process-circle">
+        <svg class="process-center-logo" viewBox="0 0 300 300" fill="none">
+          <circle cx="150" cy="150" r="141" fill="#1E3016"/>
+          <circle cx="150" cy="150" r="142" stroke="#C9A24A" stroke-width="2.5"/>
+          <rect x="140" y="44" width="20" height="14" rx="7" fill="none" stroke="#F4EFE4" stroke-width="3.5"/>
+          <rect x="147" y="56" width="6" height="82" rx="2" fill="#F4EFE4"/>
+          <path d="M133 138 Q150 202 167 138 Z" fill="#111" stroke="#F4EFE4" stroke-width="2.5"/>
+          <line x1="133" y1="138" x2="167" y2="138" stroke="#F4EFE4" stroke-width="2.5"/>
+          <path d="M150 150 Q138 133 143 120 Q154 135 150 150Z" fill="#7BAD56"/>
+          <path d="M150 150 Q162 133 157 120 Q146 135 150 150Z" fill="#5C8A3C"/>
+          <g transform="translate(78,118)"><path d="M0 0 Q-20 -24 -6 -40 Q5 -18 0 0Z" fill="#5C8A3C"/><path d="M0 0 Q-26 -13 -20 -32 Q-6 -14 0 0Z" fill="#7BAD56"/></g>
+          <g transform="translate(222,118)"><path d="M0 0 Q20 -24 6 -40 Q-5 -18 0 0Z" fill="#5C8A3C"/><path d="M0 0 Q26 -13 20 -32 Q6 -14 0 0Z" fill="#7BAD56"/></g>
+          <text x="105" y="162" font-family="Georgia,serif" font-size="19" fill="#5C8A3C" font-weight="bold">20</text>
+          <text x="166" y="162" font-family="Georgia,serif" font-size="19" fill="#5C8A3C" font-weight="bold">25</text>
+          <path id="pa" d="M58,150 A92,92 0 0,1 242,150" fill="none"/>
+          <text font-family="Georgia,serif" font-size="23" fill="#C9A24A" font-weight="bold" letter-spacing="8"><textPath href="#pa" startOffset="17%">WELCH</textPath></text>
+          <path id="pb" d="M50,160 A102,102 0 0,0 250,160" fill="none"/>
+          <text font-family="Georgia,serif" font-size="13.5" fill="#8FAF72" letter-spacing="3.2"><textPath href="#pb" startOffset="5%">GARDENING SERVICES</textPath></text>
+        </svg>
+      </div>
+    </div>
+    <div class="process-steps">
+      <div class="pstep reveal"><div class="pstep-n">01</div><div><p class="pstep-title">Get in touch</p><p class="pstep-text">Drop us a message or fill out our quote form. Tell us about your garden and what you'd like — no pressure, no obligation.</p></div></div>
+      <div class="pstep reveal"><div class="pstep-n">02</div><div><p class="pstep-title">Free site visit</p><p class="pstep-text">We come to you for a complimentary consultation. We walk the space, listen carefully, and assess what your garden needs.</p></div></div>
+      <div class="pstep reveal"><div class="pstep-n">03</div><div><p class="pstep-title">Clear, honest quote</p><p class="pstep-text">A written quote with no hidden extras. We'll walk through options at different price points so you're always in control.</p></div></div>
+      <div class="pstep reveal"><div class="pstep-n">04</div><div><p class="pstep-title">We get to work</p><p class="pstep-text">Our team arrives on schedule, works to the highest standard, and leaves your space spotless. Many clients become long-term friends.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header reveal">
+    <p class="section-kicker">Happy customers</p>
+    <h2 class="section-h2">What our neighbours <em>say</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="tcard reveal"><div class="tcard-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tcard-quote">Absolutely transformed our garden. We'd let it get totally overgrown and didn't know where to start. Welch came out within a week, gave us an honest quote, and the result is stunning.</p><p class="tcard-author">Sarah &amp; Tom B.</p><p class="tcard-loc">Regular maintenance customers</p></div>
+    <div class="tcard reveal"><div class="tcard-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tcard-quote">I've tried several gardeners over the years and nobody comes close to the reliability and quality of Welch. They remember what we discussed last time — they genuinely care.</p><p class="tcard-author">Margaret H.</p><p class="tcard-loc">Ongoing maintenance contract</p></div>
+    <div class="tcard reveal"><div class="tcard-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tcard-quote">Brilliant communication throughout, genuinely competitive on price, and the finished result exceeded our expectations. We'll be using Welch ongoing without question.</p><p class="tcard-author">James R.</p><p class="tcard-loc">Garden redesign &amp; planting</p></div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="area" id="areas">
+  <div class="reveal">
+    <p class="intro-kicker">Coverage</p>
+    <h2 class="intro-title">We come <em>to you</em></h2>
+    <p class="intro-body" style="margin-bottom:1.5rem">Based locally and expanding our reach, Welch Gardening Services covers a wide surrounding area. Not sure if we cover your postcode? Just ask — we're always happy to discuss.</p>
+    <ul class="area-list">
+      <li>Local town &amp; surrounds</li>
+      <li>Neighbouring villages</li>
+      <li>Rural properties</li>
+      <li>Commercial premises</li>
+      <li>New developments</li>
+      <li>Estate management</li>
+    </ul>
+    <div style="margin-top:2rem">
+      <a href="#contact" class="btn-fill" style="background:var(--forest)">Check my area</a>
+    </div>
+  </div>
+  <div class="area-map reveal">
+    <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#4A6B35" stroke-width=".5" opacity=".4"><line x1="0" y1="50" x2="400" y2="50"/><line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="150" x2="400" y2="150"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="250" x2="400" y2="250"/><line x1="0" y1="300" x2="400" y2="300"/><line x1="0" y1="350" x2="400" y2="350"/><line x1="50" y1="0" x2="50" y2="400"/><line x1="100" y1="0" x2="100" y2="400"/><line x1="150" y1="0" x2="150" y2="400"/><line x1="200" y1="0" x2="200" y2="400"/><line x1="250" y1="0" x2="250" y2="400"/><line x1="300" y1="0" x2="300" y2="400"/><line x1="350" y1="0" x2="350" y2="400"/></g>
+      <g stroke="#6B8C5A" stroke-width="2" opacity=".45" fill="none"><path d="M0 200 Q100 180 200 200 Q300 220 400 200"/><path d="M200 0 Q220 100 200 200 Q180 300 200 400"/><path d="M0 100 Q150 80 250 150 Q350 220 400 180"/><path d="M50 400 Q120 300 200 250 Q280 200 380 100"/></g>
+      <path d="M120 80 Q200 60 280 90 Q340 130 320 220 Q300 300 220 330 Q140 350 90 280 Q50 210 80 140 Q95 110 120 80Z" fill="#2F4A23" opacity=".3" stroke="#5C8A3C" stroke-width="1.5"/>
+    </svg>
+    <div class="area-pin" style="top:42%;left:50%"></div>
+    <div class="area-pin" style="top:35%;left:62%;width:8px;height:8px;animation-delay:.5s"></div>
+    <div class="area-pin" style="top:55%;left:40%;width:8px;height:8px;animation-delay:1s"></div>
+    <div class="area-pin" style="top:48%;left:68%;width:6px;height:6px;animation-delay:1.5s"></div>
+    <div class="area-pin" style="top:30%;left:45%;width:6px;height:6px;animation-delay:.8s"></div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <div class="reveal">
+      <div class="cta-label">Free consultation — no obligation</div>
+      <h2 class="cta-h2">Ready for a garden<br>you're <em>proud of?</em></h2>
+      <p class="cta-p">Whether it's a one-off tidy, a regular maintenance plan, or a full redesign — we'd love to hear from you. Get in touch today for a free, no-pressure quote.</p>
+      <div style="margin-top:2.5rem;display:flex;flex-direction:column;gap:1rem;font-size:.875rem;font-weight:300;color:rgba(250,250,245,.5)">
+        <div>📞 &nbsp;<a href="#" style="color:var(--gold-warm);text-decoration:none">Your number here</a></div>
+        <div>✉ &nbsp;<a href="mailto:hello@welchgardening.co.uk" style="color:var(--gold-warm);text-decoration:none">hello@welchgardening.co.uk</a></div>
+        <div>📍 &nbsp;Serving you locally &amp; beyond</div>
+        <div style="margin-top:.5rem;font-size:.75rem;color:rgba(250,250,245,.25)">Typical response within 24 hours</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="form-group">
+        <div class="form-row">
+          <input class="form-field" type="text" placeholder="Your name">
+          <input class="form-field" type="tel" placeholder="Phone number">
+        </div>
+        <input class="form-field" type="email" placeholder="Email address">
+        <select class="form-field">
+          <option value="" disabled selected>Service required</option>
+          <option>Lawn Care &amp; Mowing</option>
+          <option>Hedge Trimming</option>
+          <option>Planting &amp; Borders</option>
+          <option>Garden Design</option>
+          <option>Hard Landscaping</option>
+          <option>Seasonal Clearance</option>
+          <option>Regular Maintenance Contract</option>
+          <option>Not sure — just want advice</option>
+        </select>
+        <textarea class="form-field ta" placeholder="Tell us a little about your garden and what you'd like to achieve..."></textarea>
+        <button class="form-submit" onclick="this.textContent='✓ Request received — we\'ll be in touch soon!';this.style.background='#4A6B35';this.style.cursor='default'">Send My Free Quote Request</button>
+        <p style="font-size:.7rem;color:rgba(250,250,245,.22);text-align:center">No spam, ever. We respect your privacy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo-wrap">
+        <svg class="footer-logo-badge" viewBox="0 0 300 300" fill="none">
+          <circle cx="150" cy="150" r="141" fill="#1E3016"/>
+          <circle cx="150" cy="150" r="142" stroke="#C9A24A" stroke-width="2.5"/>
+          <rect x="140" y="44" width="20" height="14" rx="7" fill="none" stroke="#F4EFE4" stroke-width="3.5"/>
+          <rect x="147" y="56" width="6" height="82" rx="2" fill="#F4EFE4"/>
+          <path d="M133 138 Q150 202 167 138 Z" fill="#111" stroke="#F4EFE4" stroke-width="2.5"/>
+          <line x1="133" y1="138" x2="167" y2="138" stroke="#F4EFE4" stroke-width="2.5"/>
+          <path d="M150 150 Q138 133 143 120 Q154 135 150 150Z" fill="#7BAD56"/>
+          <path d="M150 150 Q162 133 157 120 Q146 135 150 150Z" fill="#5C8A3C"/>
+          <g transform="translate(78,118)"><path d="M0 0 Q-20 -24 -6 -40 Q5 -18 0 0Z" fill="#5C8A3C"/><path d="M0 0 Q-26 -13 -20 -32 Q-6 -14 0 0Z" fill="#7BAD56"/></g>
+          <g transform="translate(222,118)"><path d="M0 0 Q20 -24 6 -40 Q-5 -18 0 0Z" fill="#5C8A3C"/><path d="M0 0 Q26 -13 20 -32 Q6 -14 0 0Z" fill="#7BAD56"/></g>
+          <text x="105" y="162" font-family="Georgia,serif" font-size="19" fill="#5C8A3C" font-weight="bold">20</text>
+          <text x="166" y="162" font-family="Georgia,serif" font-size="19" fill="#5C8A3C" font-weight="bold">25</text>
+          <path id="fa" d="M58,150 A92,92 0 0,1 242,150" fill="none"/>
+          <text font-family="Georgia,serif" font-size="23" fill="#C9A24A" font-weight="bold" letter-spacing="8"><textPath href="#fa" startOffset="17%">WELCH</textPath></text>
+          <path id="fb" d="M50,160 A102,102 0 0,0 250,160" fill="none"/>
+          <text font-family="Georgia,serif" font-size="13.5" fill="#8FAF72" letter-spacing="3.2"><textPath href="#fb" startOffset="5%">GARDENING SERVICES</textPath></text>
+        </svg>
+        <div class="footer-wordmark">Welch<span>Gardening Services</span></div>
+      </div>
+      <p class="footer-desc">Trusted, local gardening experts delivering craft, reliability, and genuine passion — from a simple lawn cut to a full garden transformation.</p>
+      <div class="footer-contact-line">
+        <div>📞 <a href="#">Your number here</a></div>
+        <div>✉ <a href="mailto:hello@welchgardening.co.uk">hello@welchgardening.co.uk</a></div>
+      </div>
+    </div>
+    <div>
+      <p class="footer-col-title">Services</p>
+      <ul class="footer-links">
+        <li><a href="#services">Lawn Care</a></li>
+        <li><a href="#services">Hedge Trimming</a></li>
+        <li><a href="#services">Planting</a></li>
+        <li><a href="#services">Garden Design</a></li>
+        <li><a href="#services">Hard Landscaping</a></li>
+        <li><a href="#services">Seasonal Clearance</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Company</p>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#areas">Areas Covered</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Get Started</p>
+      <ul class="footer-links">
+        <li><a href="#contact">Free Quote</a></li>
+        <li><a href="#contact">Book a Visit</a></li>
+        <li><a href="#contact">Maintenance Plans</a></li>
+        <li><a href="#contact">Commercial</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Welch Gardening Services. All rights reserved. | Privacy Policy | Terms &amp; Conditions</p>
+    <div class="footer-badges">
+      <span class="fbadge">Est. 2025</span>
+      <span class="fbadge">Fully Insured</span>
+      <span class="fbadge">Free Quotes</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'),curring=document.getElementById('curring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function animR(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;curring.style.left=rx+'px';curring.style.top=ry+'px';requestAnimationFrame(animR)})();
+document.querySelectorAll('a,button,.svc,.tcard').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';cur.style.background='var(--gold)';curring.style.opacity='.12'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='12px';cur.style.height='12px';cur.style.background='var(--leaf)';curring.style.opacity='.5'});
+});
+
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4)*.08+'s';obs.observe(el)});
+</script>
+</body>
+</html>
