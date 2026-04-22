@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welch Gardening Services | Est. 2025</title>
+<title>Cock Gardening Services | Est. 2025</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -2121,7 +2121,7 @@ footer {
       </div>
 
       <div class="contact-form-wrap reveal reveal-delay-2">
-        <form id="quoteForm" action="https://formspree.io/f/xzdykbrr" method="POST">
+        <form id="quoteForm" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label for="fname">First name</label>
@@ -2373,6 +2373,17 @@ document.querySelectorAll('[data-ba-card]').forEach(card => {
   });
 });
 
+
+/* -----------------------------------------------
+   FORM SUBMIT (demo)
+   ----------------------------------------------- */
+document.getElementById('quoteForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.form-submit');
+  btn.textContent = '✓ Request sent! We\'ll be in touch within 24 hours.';
+  btn.style.background = 'var(--c-green-mid)';
+  btn.disabled = true;
+});
 
 
 /* -----------------------------------------------
